@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- 이 아래 영역이 제일 중요 -->
+    <!-- 무조건!! 이 app 영역 안에서 html 작성 -->
+    <div id="app">
+        <h1>1. string과 toHTML</h1>
+        {{ str }}
+        <div v-html="hstr"></div>
+    </div>
+
+    <!-- 여기서 제작된 내용이 위에 뿌려짐.. -->
+    <script>
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                // Now script.
+                const str = "<h2>안녕하세요.<h2>"
+                const hstr = "<h2>반갑습니다.</h2>" // '<h2>'+str+'</h2>'
+                return {str, hstr} // html 항목을 위로 보내는 역할.
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>

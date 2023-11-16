@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- 이 아래 영역이 제일 중요 -->
+    <!-- 이 app 영역 안에서 html 작성 -->
+    <div id="app">
+        <h1>2. v-if, v-show</h1>
+        <div v-if="true">주문했어요.</div>
+        <div v-show="true">맛있겠다.</div>
+        <div v-if="false">생각보다 별로네...</div>
+        <div v-show="false">다신 안올꺼야!!!</div>
+        <hr>
+        <button v-on:click="stat=true" type="button">보이기</button>
+        <button v-on:click="stat=false" type="button">숨기기</button>
+        <div>{{stat}}</div>
+        <div v-if="stat">나는 v-if</div>
+        <div v-show="stat">나는 v-show</div>
+    </div>
+
+    <!-- 여기서 제작된 내용이 위에 뿌려짐.. -->
+    <script>
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                // Now script.
+                const stat = ref(false)
+                return { stat }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
