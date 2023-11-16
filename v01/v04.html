@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- 이 아래 영역이 제일 중요 -->
+    <!-- 이 app 영역 안에서 html 작성 -->
+    <div id="app">
+        <h1>4. 문서속성</h1>
+        <input :placeholder="obj.item"/>
+        <img :src="obj.link">
+        <input v-model="obj.data">
+        <button :disabled="obj.data===''" @click="aa('되네')">전송</button>
+    </div>
+
+    <!-- 여기서 제작된 내용이 위에 뿌려짐.. -->
+    <script>
+        const { createApp, reactive } = Vue
+
+        createApp({
+            setup() {
+                // Now script.
+                const obj = reactive({
+                    item: '속성이 세겨짐',
+                    link: 'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-after/Landscape-BW.jpg',
+                    data: "",
+                })
+                const aa = text => alert(obj.data + text)
+                return { obj, aa }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>

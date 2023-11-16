@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- 이 아래 영역이 제일 중요 -->
+    <!-- 이 app 영역 안에서 html 작성 -->
+    <div id="app">
+        <h1>3. 양방향 입출력(v-model)</h1>
+        v-model 데이터: <input v-model="data" />
+        <hr>
+        v-bind 데이터: <input v-bind:value="data"><br />
+        v-on 데이터: <input v-on:keyup="data=$event.target.value" /><br />
+        v-on, v-bind 데이터: <input v-on:keyup="data=$event.target.value" v-bind:value="data"><br />
+        <hr>
+        <button @click="fn">console로 전송</button>
+        <button @click="data=`비울게요.`">휴지통</button>
+        <h3>{{data}}</h3>
+    </div>
+
+    <!-- 여기서 제작된 내용이 위에 뿌려짐.. -->
+    <script>
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                // Now script.
+                const data = ref()
+                const fn = () => console.log(data.value)
+                return { data, fn }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
