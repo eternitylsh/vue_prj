@@ -1,15 +1,18 @@
 <template>
-  <button>숫자 세기: {{ count }}</button>
+  <!-- <nicep01></nicep01> -->
+  <note01></note01>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import nice_p01 from './components/nice.vue'
+// import nicep01 from './components/nice_p01.vue'
+import note01 from './components/note_01.vue'
 
 export default {
   name: 'App',
   components: {
-    nice_p01,
+    // nicep01, 
+    note01,
   }
 }
 </script>
@@ -19,7 +22,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
 }
