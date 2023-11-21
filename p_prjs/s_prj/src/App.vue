@@ -1,20 +1,23 @@
 <template>
-  <nicep01></nicep01>
+  <!-- <nicep01></nicep01> -->
+  <nicep02></nicep02>
   <!-- <note01></note01> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import nicep01 from './components/nice_p01.vue'
+// import nicep01 from './components/nice_p01.vue'
+import nicep02 from "./components/nice_p02.vue";
 // import note01 from './components/note_01.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    nicep01, 
+    // nicep01,
+    nicep02,
     // note01,
-  }
-}
+  },
+};
 </script>
 
 <style>
