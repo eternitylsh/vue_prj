@@ -3,10 +3,14 @@
   <button @click="todoId++">다음 할 일 가져오기</button>
   <p v-if="!todoData">로딩...</p>
   <pre v-else>{{ todoData }}</pre>
+  <hr>
+  <nicec01 :msg="to_c1_str"></nicec01>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
+
+import nicec01 from './child0/nice_c01.vue'
 
 const todoId = ref(1);
 const todoData = ref(null);
@@ -24,4 +28,11 @@ watch(todoId, (newId) => {
 });
 
 fetchData(todoId.value);
+
+// ===================================
+
+const to_c1_str = ref("wow~ completed~!")
+
+
+
 </script>
