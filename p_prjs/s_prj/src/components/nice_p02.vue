@@ -4,7 +4,8 @@
   <p v-if="!todoData">로딩...</p>
   <pre v-else>{{ todoData }}</pre>
   <hr>
-  <nicec01 :msg="to_c1_str"></nicec01>
+  <nicec01 :msg="to_c1_str" @response="msg => c_nice = msg">부모가 보내는 : {{ c_nice2 }}</nicec01>
+  <p>{{ c_nice }}</p>
 </template>
 
 <script setup>
@@ -32,7 +33,7 @@ fetchData(todoId.value);
 // ===================================
 
 const to_c1_str = ref("wow~ completed~!")
-
-
+const c_nice = ref('Can\'t read Nice_c01;;;')
+const c_nice2 = ref('Wow! Nice c01!!!')
 
 </script>
