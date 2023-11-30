@@ -1,5 +1,8 @@
 <script setup>
-import userinput from './components/UserInput.vue'
+// import userinput from './components/UserInput.vue'
+// import bindcomp from './components/bind01.vue'
+// import condloop from './components/condloop.vue'
+import fbind from './components/f_bind02.vue'
 
 const title = "다양한 예시모음..."
 
@@ -11,12 +14,14 @@ const title = "다양한 예시모음..."
   </header>
 
   <main>
-    <userinput>
+    <!-- <userinput>
       <h2>'HelloWorld'</h2>
-    </userinput>
+    </userinput> -->
+    <!-- <bindcomp></bindcomp>
+    <condloop></condloop> -->
+    <fbind></fbind>
   </main>
 </template>
 
 <style>
-
 </style>
