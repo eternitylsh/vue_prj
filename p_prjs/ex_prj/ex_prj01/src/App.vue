@@ -4,7 +4,7 @@
 // import condloop from './components/condloop.vue'
 // import fbind from './components/f_bind02.vue'
 import comp1 from './components/compo01.vue'
-import md from './components/MarkDown.vue'
+// import md from './components/MarkDown.vue'
 
 const title = "다양한 예시모음..."
 
@@ -23,7 +23,7 @@ const title = "다양한 예시모음..."
     <condloop></condloop> -->
     <!-- <fbind></fbind> -->
     <comp1></comp1>
-    <md></md>
+    <!-- <md></md> -->
   </main>
 </template>
 
