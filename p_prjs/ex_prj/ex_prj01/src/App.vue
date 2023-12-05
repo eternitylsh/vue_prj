@@ -5,6 +5,7 @@
 // import fbind from './components/f_bind02.vue'
 import comp1 from './components/compo01.vue'
 // import md from './components/MarkDown.vue'
+import indata from './components/In_data.vue'
 
 const title = "다양한 예시모음..."
 
@@ -24,6 +25,7 @@ const title = "다양한 예시모음..."
     <!-- <fbind></fbind> -->
     <comp1></comp1>
     <!-- <md></md> -->
+    <indata></indata>
   </main>
 </template>
 
