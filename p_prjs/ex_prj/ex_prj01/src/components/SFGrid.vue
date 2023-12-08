@@ -16,9 +16,9 @@
     <form id="search">
         Search <input name="query" v-model="shQuery">
     </form>
-  <DemoGrid
+  <DGrid
     :data="gridData"
     :columns="gridColumns"
-    :filter-key="searchQuery">
-  </DemoGrid>
+    :filter-key="shQuery">
+  </DGrid>
 </template>

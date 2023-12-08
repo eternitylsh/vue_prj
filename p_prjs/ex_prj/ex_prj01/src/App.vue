@@ -6,6 +6,7 @@
 import comp1 from './components/compo01.vue'
 // import md from './components/MarkDown.vue'
 import indata from './components/In_data.vue'
+import sfgrid from './components/SFGrid.vue'
 
 const title = "다양한 예시모음..."
 
@@ -26,6 +27,7 @@ const title = "다양한 예시모음..."
     <comp1></comp1>
     <!-- <md></md> -->
     <indata></indata>
+    <sfgrid></sfgrid>
   </main>
 </template>
 

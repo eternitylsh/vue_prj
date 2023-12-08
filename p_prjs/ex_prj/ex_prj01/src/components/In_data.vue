@@ -12,7 +12,6 @@
     watchEffect(async () => {
         const url = `${API_URL}${currentBranch.value}`
         commits.value = await (await fetch(url)).json()
-        console.log(commits)
     })
 
     function truncate(v) {
