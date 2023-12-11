@@ -3,10 +3,11 @@
 // import bindcomp from './components/bind01.vue'
 // import condloop from './components/condloop.vue'
 // import fbind from './components/f_bind02.vue'
-import comp1 from './components/compo01.vue'
+// import comp1 from './components/compo01.vue'
 // import md from './components/MarkDown.vue'
-import indata from './components/In_data.vue'
-import sfgrid from './components/SFGrid.vue'
+// import indata from './components/In_data.vue'
+// import sfgrid from './components/SFGrid.vue'
+  import tview from './components/Tview.vue'
 
 const title = "다양한 예시모음..."
 
@@ -24,10 +25,11 @@ const title = "다양한 예시모음..."
     <!-- <bindcomp></bindcomp>
     <condloop></condloop> -->
     <!-- <fbind></fbind> -->
-    <comp1></comp1>
+    <!-- <comp1></comp1> -->
     <!-- <md></md> -->
-    <indata></indata>
-    <sfgrid></sfgrid>
+    <!-- <indata></indata>
+    <sfgrid></sfgrid> -->
+    <tview></tview>
   </main>
 </template>
 
