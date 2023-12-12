@@ -7,7 +7,8 @@
 // import md from './components/MarkDown.vue'
 // import indata from './components/In_data.vue'
 // import sfgrid from './components/SFGrid.vue'
-  import tview from './components/Tview.vue'
+// import tview from './components/Tview.vue'
+import svggraph from './components/svg.vue'
 
 const title = "다양한 예시모음..."
 
@@ -29,7 +30,8 @@ const title = "다양한 예시모음..."
     <!-- <md></md> -->
     <!-- <indata></indata>
     <sfgrid></sfgrid> -->
-    <tview></tview>
+    <!-- <tview></tview> -->
+    <svggraph></svggraph>
   </main>
 </template>
 

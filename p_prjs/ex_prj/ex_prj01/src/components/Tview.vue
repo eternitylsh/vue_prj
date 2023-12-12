@@ -31,3 +31,13 @@
       <TreeItem class="item" :model="treeData"></TreeItem>
     </ul>
 </template>
+
+<style>
+    .item {
+    cursor: pointer;
+    line-height: 1.5;
+    }
+    .bold {
+    font-weight: bold;
+    }
+</style>
