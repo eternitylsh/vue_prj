@@ -9,6 +9,7 @@
 // import sfgrid from './components/SFGrid.vue'
 // import tview from './components/Tview.vue'
 import svggraph from './components/svg.vue'
+import mdcon from './components/mdcon.vue'
 
 const title = "다양한 예시모음..."
 
@@ -32,7 +33,9 @@ const title = "다양한 예시모음..."
     <sfgrid></sfgrid> -->
     <!-- <tview></tview> -->
     <svggraph></svggraph>
+    <mdcon></mdcon>
   </main>
+  <div id="bottom"></div>
 </template>
 
 <style>
