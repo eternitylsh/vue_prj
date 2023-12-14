@@ -8,8 +8,10 @@
 // import indata from './components/In_data.vue'
 // import sfgrid from './components/SFGrid.vue'
 // import tview from './components/Tview.vue'
-import svggraph from './components/svg.vue'
-import mdcon from './components/mdcon.vue'
+// import svggraph from './components/svg.vue'
+// import mdcon from './components/mdcon.vue'
+// import tlist from './components/Tlist.vue'
+import todo from './components/Todo.vue'
 
 const title = "다양한 예시모음..."
 
@@ -32,8 +34,10 @@ const title = "다양한 예시모음..."
     <!-- <indata></indata>
     <sfgrid></sfgrid> -->
     <!-- <tview></tview> -->
-    <svggraph></svggraph>
+    <!-- <svggraph></svggraph>
     <mdcon></mdcon>
+    <tlist></tlist> -->
+    <todo></todo>
   </main>
   <div id="bottom"></div>
 </template>
