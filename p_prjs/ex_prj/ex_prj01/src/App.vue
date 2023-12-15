@@ -11,7 +11,11 @@
 // import svggraph from './components/svg.vue'
 // import mdcon from './components/mdcon.vue'
 // import tlist from './components/Tlist.vue'
-import todo from './components/Todo.vue'
+// import todo from './components/Todo.vue'
+// import fc from './components/FC.vue'
+// import abook from './components/AirBook.vue'
+// import timer from './components/Timer.vue'
+// import crud from './components/CRUD.vue'
 
 const title = "다양한 예시모음..."
 
@@ -37,7 +41,13 @@ const title = "다양한 예시모음..."
     <!-- <svggraph></svggraph>
     <mdcon></mdcon>
     <tlist></tlist> -->
-    <todo></todo>
+    <!-- <todo></todo> -->
+    <!-- <fc></fc>
+    <abook></abook>
+    <timer></timer>
+    <crud></crud> -->
+
+    
   </main>
   <div id="bottom"></div>
 </template>
