@@ -4,6 +4,7 @@
     const history = shallowReactive([[]])
     const index = ref(0)
     const circles = ref([])
+    const circler = ref(50)
     const selected = ref()
     const adjusting = ref(false)
 
@@ -21,12 +22,15 @@
             return Math.sqrt(dx * dx + dy * dy) <= r
         })
 
+        
+        
         if (!selected.value) {
             circles.value.push({
             cx: x,
             cy: y,
-            r: 50
+            r: circler.value
             })
+            console.log(x, y, circles.value[circles.value.length - 1])
             push()
         }
     }
@@ -40,7 +44,7 @@
     const push = () => {
         history.length = ++index.value
         history.push(clone(circles.value))
-        console.log(toRaw(history))
+        // console.log(toRaw(history))
     }
 
     const undo = () => {
@@ -52,7 +56,7 @@
     }
 
     const clone = circles => {
-        return circles.map((c) => ({ ...c }))
+        return circles.map(c => ({ ...c }))
     }
 </script>
 

@@ -16,6 +16,7 @@
 // import abook from './components/AirBook.vue'
 // import timer from './components/Timer.vue'
 // import crud from './components/CRUD.vue'
+import ncc from './components/NCircle.vue'
 
 const title = "다양한 예시모음..."
 
@@ -46,7 +47,7 @@ const title = "다양한 예시모음..."
     <abook></abook>
     <timer></timer>
     <crud></crud> -->
-
+    <ncc></ncc>
     
   </main>
   <div id="bottom"></div>
