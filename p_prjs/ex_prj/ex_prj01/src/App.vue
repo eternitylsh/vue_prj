@@ -23,9 +23,9 @@ const title = "다양한 예시모음..."
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <h1>{{ title }}</h1>
-  </header>
+  </header> -->
 
   <main>
     <!-- <userinput>

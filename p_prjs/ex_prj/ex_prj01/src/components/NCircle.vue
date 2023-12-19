@@ -1,4 +1,7 @@
 <script setup>
+
+    // 이 예시는 좋은데.. 좌표 설정등을 해당 컴퍼넌트 내로 조정이 필요;;
+
     import { ref, shallowReactive, toRaw } from 'vue'
 
     const history = shallowReactive([[]])
@@ -20,9 +23,7 @@
             const dx = cx - x
             const dy = cy - y
             return Math.sqrt(dx * dx + dy * dy) <= r
-        })
-
-        
+        })        
         
         if (!selected.value) {
             circles.value.push({
@@ -55,6 +56,13 @@
         circles.value = clone(history[++index.value])
     }
 
+    const init = () => {
+      circles.value = 0
+      circles.value = []
+      history.value = []
+      index.value = 0
+    }
+
     const clone = circles => {
         return circles.map(c => ({ ...c }))
     }
@@ -82,11 +90,13 @@
     <div class="controls">
       <button @click="undo" :disabled="index <= 0">Undo</button>
       <button @click="redo" :disabled="index >= history.length - 1">Redo</button>
+      <button @click="init" :disabled="0 === circles.length">Init</button>
     </div>
   
     <div class="dialog" v-if="adjusting" @click.stop>
       <p>Adjust radius of circle at ({{ selected.cx }}, {{ selected.cy }})</p>
       <input type="range" v-model="selected.r" min="1" max="300">
+      <p> {{ selected.r }} </p>
     </div>
   </template>
 
