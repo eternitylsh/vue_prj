@@ -1,5 +1,11 @@
 <script setup>
-  import { reactive } from 'vue';
+  import { ref, reactive } from 'vue';
+
+  import Header from './components/header.vue'
+  import Nav from './components/nav.vue'
+  import Section from './components/section.vue'
+  import Aside from './components/aside.vue'
+  import Footer from './components/footer.vue'
 
   const sign = reactive({
     title: "header",
@@ -12,16 +18,22 @@
 
 <template>
   <header>
-    {{ sign.title }}
+    <Header :msg="sign.title"/>
   </header>
   <nav>
-    {{ sign.nav }}
+    <Nav :msg="sign.nav" />
   </nav>
   <main>
-    <section>{{ sign.section }}</section>
-    <aside>{{ sign.aside }}</aside>
+    <section>
+      <Section :msg="sign.section"/>
+    </section>
+    <aside>
+      <Aside :msg="sign.aside" />
+    </aside>
   </main>
-  <footer>{{ sign.footer }}</footer>
+  <footer>
+    <Footer :msg="sign.footer" />
+  </footer>
 </template>
 
 <style scoped>
@@ -30,7 +42,6 @@ header {
   height: 12%;
 
   background-color: #365486;
-  color : white;
 }
 
 nav {
@@ -56,8 +67,6 @@ main section {
 main aside {
   width: 25%;
   background-color: #365486;
-
-  color : white;
 }
 
 footer {
@@ -65,8 +74,6 @@ footer {
   height: 12%;
 
   background-color: #0F1035;
-
-  color : white;
 }
 
 @media (min-width: 1024px) {
