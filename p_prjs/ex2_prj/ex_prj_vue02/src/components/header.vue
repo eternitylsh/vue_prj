@@ -16,6 +16,12 @@
 </template>
 
 <style>
+header {
+    width: 100%;
+    height: 12%;
+
+    background-color: #365486;
+}
 header span {
     color : white;
 }

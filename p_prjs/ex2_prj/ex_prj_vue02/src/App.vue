@@ -37,19 +37,6 @@
 </template>
 
 <style scoped>
-header {
-  width: 100%;
-  height: 12%;
-
-  background-color: #365486;
-}
-
-nav {
-  width: 100%;
-  height: 8%;
-
-  background-color:#DCF2F1;
-}
 
 main {
   width: 100%;
@@ -88,5 +75,9 @@ footer {
     place-items: flex-start;
     flex-wrap: wrap;
   }
+}
+
+.pull-left {
+  float: left;
 }
 </style>
