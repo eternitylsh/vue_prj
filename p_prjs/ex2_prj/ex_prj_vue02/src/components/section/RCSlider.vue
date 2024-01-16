@@ -48,18 +48,22 @@
         // input, thumb 같이 움직이도록
         const percent = ((rcs.main.min - rcs.main.min) / (rcs.main.max - rcs.main.min)) * 100;
         rcs.thumb.left = percent + "%";
-        range.style.left = percent + "%";
+        rcs.range.left = percent + "%";
     };
 
     const setRightValue = () => {
-        const _this = inputRight;
-        const [min, max] = [parseInt(_this.min), parseInt(_this.max)];
-        // 교차되지 않게, 1을 더해준 건 완전히 겹치기보다는 어느 정도 간격을 남겨두기 위해.
-        _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
-        // input, thumb 같이 움직이도록
-        const percent = ((_this.value - min) / (max - min)) * 100;
-        thumbRight.style.right = 100 - percent + "%";
-        range.style.right = 100 - percent + "%";
+        // const _this = inputRight;
+        // const [min, max] = [parseInt(_this.min), parseInt(_this.max)];
+        // // 교차되지 않게, 1을 더해준 건 완전히 겹치기보다는 어느 정도 간격을 남겨두기 위해.
+        // _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+        // // input, thumb 같이 움직이도록
+        // const percent = ((_this.value - min) / (max - min)) * 100;
+        // thumbRight.style.right = 100 - percent + "%";
+        // range.style.right = 100 - percent + "%";
+        rcs.min.value = Math.max(parseInt(rcs.main.min), parseInt(rcs.main.max) + 1);
+        const percent = ((rcs.main.min - rcs.main.min) / (rcs.main.max - rcs.main.min)) * 100;
+        rcs.thumb.right = 100 - percent + "%";
+        rcs.range.right = 100 - percent + "%";
     };
 
     inputLeft.addEventListener("input", setLeftValue);
@@ -77,14 +81,14 @@
 
         <div class="middle">
             <div class="multi-range-slider">
-                <input type="range" id="input-left" v-bind:value="rcs.min" min="0" max="100" step="0.1" value="25" />
-                <input type="range" id="input-right" v-bind:value="rcs.max" min="0" max="100" step="0.1" value="75" />
+                <input type="range" id="input-left" v-bind:value="rcs.main.min" min="0" max="100" step="0.1" value="25" />
+                <input type="range" id="input-right" v-bind:value="rcs.main.max" min="0" max="100" step="0.1" value="75" />
 
                 <div class="slider">
                     <div class="track"></div>
-                    <div class="range"></div>
-                    <div class="thumb left" v-bind:style="tleft"></div>
-                    <div class="thumb right" v-bind:style="tright"></div>
+                    <div class="range" v-bind:style="rcs.range"></div>
+                    <div class="thumb left" v-bind:style="rcs.thumb.left"></div>
+                    <div class="thumb right" v-bind:style="rcs.thumb.right"></div>
                 </div>
             </div>
         </div>
