@@ -1,6 +1,7 @@
 <script setup>
     import { ref } from 'vue'
-    import vcon from './RCSlider.vue'
+    // import vcon from './RCSlider.vue'
+    import testdrag from './test_drag.vue'
 
     const isClicked = ref('false')
 
@@ -39,7 +40,8 @@
         <div id="videoview" class="flex_center">
             <video class="video" src="../../assets/movie/Ice_Bear.mp4" frameborder="0" preload="metadata" muted playsinline />
         </div>
-        <vcon/>
+        <!-- <vcon/> -->
+        <testdrag />
     </div>
 </template>
 

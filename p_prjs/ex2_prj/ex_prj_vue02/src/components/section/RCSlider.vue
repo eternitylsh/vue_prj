@@ -12,8 +12,8 @@
 
     const rcs = reactive({
         main: {
-            min: ref(),
-            max: ref(),
+            min: 0,
+            max: 0,
         },
         thumb: {
             left: {
@@ -38,20 +38,19 @@
         }
     })
 
-    const [min, max] = [ref(0), ref(0)]
-
-    const setLeftValue = () => {
+    const setLeftValue = e => {
         //const _this = inputLeft;
         //const [min, max] = [parseInt(_this.min), parseInt(_this.max)];
         // 교차되지 않게, 1을 빼준 건 완전히 겹치기보다는 어느 정도 간격을 남겨두기 위해.
-        rcs.min.value = Math.min(parseInt(rcs.main.min), parseInt(rcs.main.max) - 1);
+        console.log('acitve0', e)
+        rcs.main.min = Math.min(parseInt(rcs.main.min), parseInt(rcs.main.max) - 1);
         // input, thumb 같이 움직이도록
         const percent = ((rcs.main.min - rcs.main.min) / (rcs.main.max - rcs.main.min)) * 100;
         rcs.thumb.left = percent + "%";
         rcs.range.left = percent + "%";
     };
 
-    const setRightValue = () => {
+    const setRightValue = e => {
         // const _this = inputRight;
         // const [min, max] = [parseInt(_this.min), parseInt(_this.max)];
         // // 교차되지 않게, 1을 더해준 건 완전히 겹치기보다는 어느 정도 간격을 남겨두기 위해.
@@ -60,14 +59,19 @@
         // const percent = ((_this.value - min) / (max - min)) * 100;
         // thumbRight.style.right = 100 - percent + "%";
         // range.style.right = 100 - percent + "%";
-        rcs.min.value = Math.max(parseInt(rcs.main.min), parseInt(rcs.main.max) + 1);
+        console.log('acitve1', e)
+        rcs.main.min = Math.max(parseInt(rcs.main.min), parseInt(rcs.main.max) + 1);
         const percent = ((rcs.main.min - rcs.main.min) / (rcs.main.max - rcs.main.min)) * 100;
         rcs.thumb.right = 100 - percent + "%";
         rcs.range.right = 100 - percent + "%";
     };
 
-    inputLeft.addEventListener("input", setLeftValue);
-    inputRight.addEventListener("input", setRightValue);
+    // inputLeft.addEventListener("input", setLeftValue);
+    // inputRight.addEventListener("input", setRightValue);
+
+    const test = e => {
+        console.log(e.target.value)
+    }
 
 </script>
 
@@ -87,11 +91,12 @@
                 <div class="slider">
                     <div class="track"></div>
                     <div class="range" v-bind:style="rcs.range"></div>
-                    <div class="thumb left" v-bind:style="rcs.thumb.left"></div>
-                    <div class="thumb right" v-bind:style="rcs.thumb.right"></div>
+                    <div class="thumb left" v-bind:style="rcs.thumb.left" @input="e => setLeftValue(e)"></div>
+                    <div class="thumb right" v-bind:style="rcs.thumb.right" @input="e => setRightValue(e)"></div>
                 </div>
             </div>
         </div>
+        <div class="test"><input type="range" name="" id="" @input="e => test(e)"></div>
     </div>
     
 </template>
@@ -117,6 +122,7 @@
   position: relative;
   width: 50%;
   max-width: 500px;
+  margin: 0.8rem auto;
 }
 
 .slider {
@@ -154,7 +160,7 @@
   border-radius: 50%;
 }
 
-input[type="range"] {
+.middle input[type="range"] {
   position: absolute;
   /* opacity로 가린 것을 이벤트도 비활성화하기 위해 */
   pointer-events: none;
@@ -164,7 +170,7 @@ input[type="range"] {
   width: 100%;
   opacity: 0;
 }
-input[type="range"]::-webkit-slider-thumb {
+.middle input[type="range"]::-webkit-slider-thumb {
   /* 겹쳐진 두 thumb를 모두 활성화 */
   pointer-events: all;
   width: 30px;
