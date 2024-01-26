@@ -2,77 +2,93 @@
     import { ref, reactive } from 'vue'
     import vcon from './RCSlider.vue'
 
-    const isClicked = ref('false')
-
-    const videoObj = ref({
-        src: "../../assets/movie/Ice_Bear.mp4",
-        preload: "metadata",
-        muted: true,
-        playsinline: true,
-
-        currentTime: 0
-    })
+    const videoObj = ref(undefined)
 
     const ntimeview = reactive({
-        videoctime: 0,
-        min: {
+        inner: {
             h: 0,
             m: 0,
             s: 0,
-            ss: 0,
-            str: `${this.h}:${this.m}:${this.s}:${this.ss}`
+            ss: 0
         },
-        max: {
-            h: 0,
-            m: 0,
-            s: 0,
-            ss: 0,
-            str: `${this.h}:${this.m}:${this.s}:${this.ss}`
+        lenval: {
+            val: 0,
+            lenstr: `${0}:${0}:${0}:${0}`,
+        },
+        str: `${0}:${0}:${0}:${0}`,
+        OnUpdate( __h, __m, __s, __ss ) {
+
+            this.inner.h = __h
+            this.inner.m = __m
+            this.inner.s = __s
+            this.inner.ss = __ss
+
+            this.str = `${this.inner.h}:${this.inner.m}:${this.inner.s}:${this.inner.ss}`
         },
 
-        OnUpdate(__v) {
-            // __v[0] : min
-            // __v[1] : max
+        OnMinMaxUpdate( __v ) {
+            this.lenval.val = Math.abs( this.OnGetCurrentTime(__v[1]) - this.OnGetCurrentTime(__v[0]) ) // max - min
+            this.lenval.lenstr = this.OnConvertTimeFormet(this.lenval.val)
+        },
+
+        OnConvertTimeFormet( __v ) {
+
+            let _h = parseInt( __v / Math.pow(60, 2) )
+            let _m = parseInt(__v / 60 )
+            const _oris = __v % 60
+            let _s = parseInt(_oris)
+            let _ss = ( _oris % 1 ).toFixed(3).substr(2, 4)
+
+            return `${_h}:${_m}:${_s}:${_ss}`
+        },
+
+        OnGetCurrentTime( __v ) {
+            return ( videoObj.value.duration / 100 ) * __v
         },
     })
 
     const movieupdate = __v => {
-    
-        // 추후.. 원천 막을방법에 관해 고민을..
-        // if( max_obj.value < min_obj.value ){ max_obj.value = min_obj.value; }
-        // console.log( `${max_obj.value}, ${min_obj.value}`  )
-        
-        
 
-        video_obj.currentTime = ( video_obj.duration / 100 ) * __v;
-        movie_HTMLtimeline_update( video_obj.currentTime )
+        ntimeview.OnMinMaxUpdate( __v[0] )
 
-        if( isClicked ) {
-            
-        }
+        const video = videoObj.value
+
+        // __v[0] = (min, max)
+        // __v[1] = update value(최근 변경된 애만 저장.)
+        video.currentTime = ntimeview.OnGetCurrentTime(__v[1].value);
+
+        // console.log(video.currentTime)
+        movie_HTMLtimeline_update( video.currentTime )
     }
 
     const movie_HTMLtimeline_update = __v => {
-        let _h = parseInt( __v / Math.pow(60, 2) );
-        let _m = parseInt(__v / 60 );
-        let _s = parseInt(__v % 60);
-        let _ss = Number( ((__v % 60).toFixed(3) ) );
-        // tofixed(3) 의 숫자 3은 UI상 표시되는 second이하 수치.
-        ntime_view.innerHTML = `${_h}:${_m}:${_s}:${_ss}`;
+
+        let _h = parseInt( __v / Math.pow(60, 2) )
+        let _m = parseInt(__v / 60 )
+        const _oris = __v % 60
+        let _s = parseInt(_oris)
+        let _ss = ( _oris % 1 ).toFixed(3).substr(2, 4)
+
+        ntimeview.OnUpdate( _h, _m, _s, _ss )
     }
+
 </script>
 
 <template>
     <div id="video_center">
         <div id="videoview" class="flex_center">
-            <video class="video" ref="videoObj" @timeupdate="currentTime_ = $event.target.currentTime" />
+            <video class="video"
+                src="../../assets/movie/Ice_Bear.mp4"
+                preload="metadata"
+                muted
+                playsinline
+                ref="videoObj" 
+            />
         </div>
-        <div id="ntime-view">
-            <span>{{ ntimeview.min.str }}</span>
-            <span>{{ ntimeview.max.str }}</span>
+        <div id="ntimecview">
+            <span>{{ ntimeview.str }} ( {{ ntimeview.lenval.lenstr }} )</span>
         </div>
-        <vcon @svalues="__vs => movieupdate(__vs)" />
-        <testdrag />
+        <vcon @svalues="movieupdate" />
     </div>
 </template>
 
@@ -96,11 +112,11 @@
     margin-top: 30px;
 }
 
-#ntime-view {
+#ntimecview {
     margin: 0 auto;
     text-align: center;
 }
-#ntime-view span {
+#ntimecview span {
     font-size: 1.2rem;
     margin: 0.5rem;
 }

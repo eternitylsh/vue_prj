@@ -1,11 +1,22 @@
 <script setup>
-    import { reactive } from 'vue'
+    import { ref, reactive } from 'vue'
     import Slider from '@vueform/slider'
 
     const value = reactive([25, 75])
+    const updatevalue = ref(0)
 
     const emit = defineEmits(['svalues'])
-    emit('svalues', value)
+
+    const updateVal = __v => {
+        updatevalue.value = __v.filter( (e, idx) => e != value[idx] )[0] 
+        value[0] = __v[0]
+        value[1] = __v[1]
+
+        emit('svalues', [value, updatevalue])
+    }
+
+    
+    
 </script>
 
 <template>
@@ -18,6 +29,7 @@
         :classes="{
             horizontal: 'slider-horizontal h-2.5',
         }"
+        @slide="v => updateVal(v)"
      />
     </div>
 </template>
